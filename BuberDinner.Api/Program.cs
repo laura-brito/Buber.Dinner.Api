@@ -1,16 +1,20 @@
-using BuberDinner.Application.Services.Authentication;
+using System.Collections.Immutable;
+using BuberDinner.Application;
+using BuberDinner.Infra;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+{
+    builder.Services.AddApplication();
+    builder.Services.AddInfra();
+    builder.Services.AddControllers();
+}
 
 WebApplication app = builder.Build();
+{
+    app.UseHttpsRedirection();
+    app.MapControllers();
 
-app.UseHttpsRedirection();
-app.MapControllers();
+    app.Run();
+}
 
-app.Run();
+
