@@ -1,25 +1,20 @@
-var builder = WebApplication.CreateBuilder(args);
+using System.Collections.Immutable;
+using BuberDinner.Application;
+using BuberDinner.Infra;
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    builder.Services.AddApplication();
+    builder.Services.AddInfra(builder.Configuration);
+    builder.Services.AddControllers();
 }
 
-app.UseHttpsRedirection();
+WebApplication app = builder.Build();
+{
+    app.UseHttpsRedirection();
+    app.MapControllers();
 
-app.UseAuthorization();
+    app.Run();
+}
 
-app.MapControllers();
 
-app.Run();
