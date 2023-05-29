@@ -20,10 +20,12 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
     }
 
 
-    public Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
+    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+
         if (_userRepository.GetUserByEmail(command.Email) is not null)
-            return Task.FromResult<ErrorOr<AuthenticationResult>>(Errors.User.DuplicateEmail);
+            return Errors.User.DuplicateEmail;
 
         //2. Create user (generate unique ID) & Persist to DB
         var user = new User
@@ -39,7 +41,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
         //3. Create JWT Token
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return Task.FromResult<ErrorOr<AuthenticationResult>>(new AuthenticationResult(user,
-                                        token));
+        return new AuthenticationResult(user,
+                                        token);
     }
 }
