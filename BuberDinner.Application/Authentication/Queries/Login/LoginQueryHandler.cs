@@ -1,4 +1,4 @@
-using BuberDinner.Domain.Entities;
+using BuberDinner.Domain.User;
 using BuberDinner.Domain.Common.Errors;
 using ErrorOr;
 using MediatR;
