@@ -1,6 +1,6 @@
 using BuberDinner.Domain.Common.Models;
-using BuberDinner.Domain.Dinner.ValueObjects;
-using BuberDinner.Domain.Host.ValueObjects;
+using BuberDinner.Domain.DinnerAggregate.ValueObjects;
+using BuberDinner.Domain.HostAggregate.ValueObjects;
 
 namespace BuberDinner.Domain.Common.ValueObjects;
 
