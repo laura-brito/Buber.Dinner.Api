@@ -2,9 +2,9 @@ using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.MenuAggregate.ValueObjects;
 
-public sealed class MenuId : ValueObject
+public sealed class MenuId : AggregateRootId<Guid>
 {
-    public Guid Value { get; }
+    public override Guid Value { get; set; }
     private MenuId(Guid id)
     {
         Value = id;
