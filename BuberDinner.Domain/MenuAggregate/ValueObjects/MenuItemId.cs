@@ -13,6 +13,11 @@ public class MenuItemId : ValueObject
     {
         return new(Guid.NewGuid());
     }
+
+    public static MenuItemId Create(Guid value)
+    {
+        return new MenuItemId(value);
+    }
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

@@ -6,8 +6,12 @@ public sealed class MenuItem : Entity<MenuItemId>
 {
     private readonly List<MenuItem> _itens = new();
 
-    public string Name { get; }
-    public string Description { get; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+
+    public MenuItem()
+    {
+    }
 
     private MenuItem(MenuItemId id, string name, string description) : base(id)
     {

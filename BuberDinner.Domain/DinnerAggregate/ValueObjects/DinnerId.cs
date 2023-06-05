@@ -3,9 +3,13 @@ using BuberDinner.Domain.Common.Models;
 namespace BuberDinner.Domain.DinnerAggregate.ValueObjects;
 public sealed class DinnerId : ValueObject
 {
-    public Guid Value { get; set; }
+    public Guid Value { get; private set; }
 
-    public DinnerId(Guid id)
+    public DinnerId()
+    {
+    }
+
+    private DinnerId(Guid id)
     {
         Value = id;
     }

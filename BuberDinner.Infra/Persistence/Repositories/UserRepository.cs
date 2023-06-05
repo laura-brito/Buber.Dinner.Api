@@ -1,7 +1,7 @@
 using BuberDinner.Application.Common.Interfaces.Persistence;
 using BuberDinner.Domain.UserAggregate;
 
-namespace BuberDinner.Infra.Persistence;
+namespace BuberDinner.Infra.Persistence.Repository;
 
 public class UserRepository : IUserRepository
 {

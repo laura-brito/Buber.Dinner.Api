@@ -9,16 +9,19 @@ namespace BuberDinner.Domain.MenuReviewAggregate;
 
 public sealed class MenuReview : AggregateRoot<MenuReviewId>
 {
-    public Rating Rating { get; }
-    public string Comment { get; }
-    public HostId HostId { get; }
-    public GuestId GuestId { get; }
-    public DinnerId DinnerId { get; }
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public Rating Rating { get; private set; }
+    public string Comment { get; private set; }
+    public HostId HostId { get; private set; }
+    public GuestId GuestId { get; private set; }
+    public DinnerId DinnerId { get; private set; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
+    protected MenuReview()
+    {
+    }
 
-    public MenuReview(MenuReviewId id,
+    private MenuReview(MenuReviewId id,
                       Rating rating,
                       string comment,
                       HostId hostId,
