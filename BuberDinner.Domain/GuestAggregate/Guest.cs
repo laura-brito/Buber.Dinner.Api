@@ -8,7 +8,7 @@ using BuberDinner.Domain.UserAggregate.ValueObjects;
 
 namespace BuberDinner.Domain.GuestAggregate;
 
-public sealed class Guest : AggregateRoot<GuestId>
+public sealed class Guest : AggregateRoot<GuestId, Guid>
 {
     private readonly List<BillId> _billIds = new();
     private readonly List<MenuReviewId> _menuReviewIds = new();

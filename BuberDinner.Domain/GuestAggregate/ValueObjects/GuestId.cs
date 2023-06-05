@@ -1,9 +1,9 @@
 using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.GuestAggregate.ValueObjects;
-public class GuestId : ValueObject
+public class GuestId : AggregateRootId<Guid>
 {
-    public Guid Value { get; set; }
+    public override Guid Value { get; set; }
 
     private GuestId(Guid id)
     {
