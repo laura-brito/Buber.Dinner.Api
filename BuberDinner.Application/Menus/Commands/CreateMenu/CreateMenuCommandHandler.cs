@@ -22,7 +22,7 @@ public class CreateMenuCommandHandler : IRequestHandler<CreateMenuCommand, Error
     {
         await Task.CompletedTask;
 
-        var menu = Menu.Create(hostId: HostId.Create(hostId: request.HostId),
+        var menu = Menu.Create(hostId: HostId.Create(value: Guid.Parse(request.HostId)),
         name: request.Name,
         description: request.Description,
         sections: request.Sections.ConvertAll(section => MenuSection.Create(name: section.Name,

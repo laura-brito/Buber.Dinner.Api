@@ -10,23 +10,25 @@ namespace BuberDinner.Domain.MenuAggregate;
 
 public sealed class Menu : AggregateRoot<MenuId>
 {
-
     private readonly List<MenuSection> _sections = new();
     private readonly List<MenuReviewId> _menuReviewIds = new();
     private readonly List<DinnerId> _dinnerIds = new();
 
-    public string Name { get; }
-    public string Description { get; }
-    public AverageRating AverageRating { get; }
-    public HostId HostId { get; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public AverageRating AverageRating { get; private set; }
+    public HostId HostId { get; private set; }
     public IReadOnlyList<MenuSection> Sections => _sections.AsReadOnly();
     public IReadOnlyList<MenuReviewId> MenuReviewIds => _menuReviewIds.AsReadOnly();
     public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
+    private Menu()
+    {
+    }
 
-    public Menu(MenuId id,
+    private Menu(MenuId id,
                 HostId hostId,
                 string name,
                 string description,
